@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan Online</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<style>
+		input{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+    <div>
+        <h1 class="text-center">Online Book Library</h1>
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="basic-addon1">#</span>
+			<input class="form-control" id="nomor" type="text" placeholder="Number">
+		</div>
+		<div class="input-group mb-3">
+			<input class="form-control" type="text" id="buku" placeholder="Book">
+		</div>
+		<div class="input-group mb-3">
+			<input class="form-control" type="text" id="pengarang" placeholder="Author">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="basic-addon1">@</span>
+			<input class="form-control" id="name" type="text" placeholder="Username">
+		</div>
+		<div class="input-group mb-3">
+			<input class="form-control" id="tanggal" type="date">
+		</div>
+		<div class="input-group mb-3">
+			<input class="form-control" id="catatan" type="text" placeholder="Notes">
+		</div>
+			<button class="btn btn-success" onclick="proses()">Simpan</button>
+		
+    </div>
+
+    <script>
+		function proses(){
+			const pilih = confirm("Masukkan data ?");
+
+			if(pilih){
+				const id = document.getElementById("nomor").value;
+				const buku = document.getElementById("buku").value;
+				const pengarang = document.getElementById("pengarang").value;
+				const namaPeminjam = document.getElementById("name").value;
+				const tanggalPinjam = document.getElementById("tanggal").value;
+				const catatanTambahan = document.getElementById("catatan").value;
+
+				const searchParams = new URLSearchParams({
+					nomor : id,
+					buku : buku,
+					pengarang : pengarang,
+					name : namaPeminjam,
+					tanggal : tanggalPinjam,
+					catat : catatanTambahan
+				});
+				window.location.href = "detail.html?" + searchParams.toString();
+			} else {
+				alert("Tidak jadi memasukkan data");
+			}			
+		}
+	</script>
+</body>
+</html>
